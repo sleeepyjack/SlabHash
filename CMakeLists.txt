@@ -82,6 +82,13 @@ if(SLABHASH_GENCODE_SM75)
   set(GENCODE ${GENCODE} ${GENCODE_SM75})
 endif(SLABHASH_GENCODE_SM75)
 
+add_library(slabhash INTERFACE)
+target_include_directories(slabhash INTERFACE
+                           src
+                           src/concurrent
+                           SlabAlloc/src)
+target_link_libraries(slabhash INTERFACE CUDA::cudart)
+
 include_directories(SlabAlloc/src)
 include_directories(cub)
 include_directories(src src/concurrent)
